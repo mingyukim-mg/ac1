@@ -1,0 +1,14 @@
+name: Print_info
+on: [push, workflow_dispatch]
+jobs:
+  cond:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Conditional
+        if: ${{github.event_name == 'push' }} #push라는 이벤트가 발생하면 steps을 실행
+        run: echo "This runs on push events only."
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output Github context
+        run: echo "${{ github.repository }}" #github의 현재 저장소 이름 출력
